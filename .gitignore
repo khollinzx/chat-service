@@ -6,6 +6,7 @@
 # Node artifact files
 node_modules/
 dist/
+docker/
 /node_modules/
 /public/hot
 /public/assets/uploads/
