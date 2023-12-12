@@ -1,6 +1,6 @@
 # Dockerfile
 # Use base image for container
-FROM richarvey/nginx-php-fpm:3.1.6
+FROM richarvey/nginx-php-fpm:latest
 
 COPY . .
 
