@@ -1,4 +1,6 @@
-FROM php:8.0-fpm
+# Dockerfile
+# Use base image for container
+FROM richarvey/nginx-php-fpm:3.1.6
 
 COPY . .
 
