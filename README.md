@@ -1,8 +1,7 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-<p align="center"><a href="" target="_blank"><img alt="" src="https://pbs.twimg.com/profile_images/1509047739958579202/-tGwtwAq_400x400.jpg" width="400"></a></p>
 
 
-## About TreeKle (API Service)
+## About Chat-Service-Backend (API Service)
 
 Chat-Service-Backend: this was an assessment assigned to me, in order to implement a chat app service, where the client part would be coded on a React-Native framework.
 ## Installtion
