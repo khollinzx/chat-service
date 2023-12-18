@@ -35,4 +35,13 @@ class MessageRepository extends BaseRepositoryAbstract
         parent::__construct($model, $this->databaseTableName);
     }
 
+    /**
+     * @param array $queries
+     * @return mixed
+     */
+    public function getUserMessages(array $queries): mixed
+    {
+        return $this->model::with($this->model->relationships)->where($queries)->sharedLock()->orderByDesc('id')->get();
+    }
+
 }

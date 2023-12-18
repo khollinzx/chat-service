@@ -36,4 +36,12 @@ class UserRepository extends BaseRepositoryAbstract
         parent::__construct($model, $this->databaseTableName);
     }
 
+
+    public function getByWhereNotContact(string $column, int $recordId, array $ids): mixed
+    {
+        return $this->model::where($column, '!=', $recordId)
+            ->WhereNotIn('id', $ids)
+            ->sharedLock()->get();
+    }
+
 }

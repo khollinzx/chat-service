@@ -21,7 +21,7 @@ class SetHeaders
     public function handle(Request $request, Closure $next)
     {
         if(!$request->hasHeader('accept') || $request->header('accept') !== "application/json")
-            return JsonResponseAPI::errorResponse('The Header is required to have {Accept: application/json}');
+            return JsonResponseAPI::errorResponse('The Header is required to have {Accept: application/json}', JsonResponseAPI::$BAD_REQUEST);
 
         return $next($request);
     }

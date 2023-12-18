@@ -8,6 +8,7 @@ use App\Http\Requests\OnboardRequest;
 use App\Models\OauthAccessToken;
 use App\Models\User;
 use App\Services\Helper;
+use Faker\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;

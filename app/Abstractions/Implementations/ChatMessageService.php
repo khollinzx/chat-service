@@ -3,6 +3,7 @@
 namespace App\Abstractions\Implementations;
 
 use App\Abstractions\AbstractClasses\ChatMessageAbstract;
+use App\Events\ChatMessageEvent;
 use App\Http\Resources\ContactResource;
 use App\Http\Resources\MessageResource;
 use App\Http\Resources\UsersResource;
@@ -22,7 +23,8 @@ class ChatMessageService extends ChatMessageAbstract
     {
         try {
             $data = [];
-            $records = User::repo()->getByWhereNot( 'id', $user->getId());
+            $contact = Contact::repo()->getByWhereContact(['owner_id' => $user->getId()]);
+            $records = User::repo()->getByWhereNotContact( 'id', $user->getId(), $contact);
 
             if(count($records))
                 collect($records)->each( function ($record) use (&$data) {
@@ -84,7 +86,7 @@ class ChatMessageService extends ChatMessageAbstract
     {
         try {
             $data = [];
-            $records = Message::repo()->getByWhere(['chat_key' => $chatKey]);
+            $records = Message::repo()->getUserMessages(['chat_key' => $chatKey]);
 
             if(count($records))
                 collect($records)->each( function ($record) use (&$data) {
@@ -108,7 +110,7 @@ class ChatMessageService extends ChatMessageAbstract
     {
         try {
             $Contact = Contact::repo()->findByWhere(['chat_key' => $chatKey]);
-            Message::repo()->createModel([
+            $message = Message::repo()->createModel([
                 'receiver_id' => $Contact->getUserId(),
                 'initiator_id' => $initiator->getId(),
                 'chat_key' => $chatKey,
@@ -116,6 +118,7 @@ class ChatMessageService extends ChatMessageAbstract
             ]);
 
             //fire up event
+            broadcast(new ChatMessageEvent($chatKey, $message));
 
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());

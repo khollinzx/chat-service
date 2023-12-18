@@ -61,6 +61,12 @@ class ContactRepository extends BaseRepositoryAbstract
         }
     }
 
+
+    public function getByWhereContact(array $queries): mixed
+    {
+        return $this->model::where($queries)->get('user_id')->toArray();
+    }
+
     /**
      * @return string|null
      */
