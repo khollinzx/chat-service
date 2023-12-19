@@ -36,7 +36,12 @@ class UserRepository extends BaseRepositoryAbstract
         parent::__construct($model, $this->databaseTableName);
     }
 
-
+    /** gets all the user assigned to a specific user
+     * @param string $column
+     * @param int $recordId
+     * @param array $ids
+     * @return mixed
+     */
     public function getByWhereNotContact(string $column, int $recordId, array $ids): mixed
     {
         return $this->model::where($column, '!=', $recordId)

@@ -38,7 +38,8 @@ class ContactRepository extends BaseRepositoryAbstract
     {
         parent::__construct($model, $this->databaseTableName);
     }
-    /***
+
+    /*** this create or set a unique key that would be used for communication between the receiver and the sender via versa
      * @param User $owner
      * @param int $userId
      * @return Model|null
@@ -61,13 +62,16 @@ class ContactRepository extends BaseRepositoryAbstract
         }
     }
 
-
+    /** fetches all contact by passing a parameter such as ["id" => 1]
+     * @param array $queries
+     * @return mixed
+     */
     public function getByWhereContact(array $queries): mixed
     {
         return $this->model::where($queries)->get('user_id')->toArray();
     }
 
-    /**
+    /** this create the unique key for communication
      * @return string|null
      */
     public function generateChatKey(): string|null

@@ -35,7 +35,7 @@ class MessageRepository extends BaseRepositoryAbstract
         parent::__construct($model, $this->databaseTableName);
     }
 
-    /**
+    /** get all message between user by passing this ['chatKey' => "Hvq8e7Gw8QOH"]
      * @param array $queries
      * @return mixed
      */
