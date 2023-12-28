@@ -10,7 +10,7 @@ services:
         container_name: 'chat-service-server'
         ports:
             - '${APP_PORT:-9901}:80'
-            - '${LARAVEL_WEBSOCKETS_PORT:-6001}:6001'
+            - '${LARAVEL_WEBSOCKETS_PORT:-6101}:6101'
         environment:
             WWWUSER: '${WWWUSER}'
             LARAVEL_SAIL: 1

@@ -48,12 +48,4 @@ Route::group([ 'prefix' => 'v1'], function () {
 
     });
 
-    /**
-     * External section
-     */
-    Route::group(['prefix' => 'external'], function () {
-        Route::post('payment/webhook', [WebhookController::class, 'resolvePaymentWebhookEvents']);
-
-    });
-
 });
